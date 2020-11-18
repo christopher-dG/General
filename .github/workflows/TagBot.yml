@@ -15,6 +15,8 @@ jobs:
         with:
           version: '1'
       - run: julia --project=.ci -e 'using Pkg; Pkg.instantiate(); Pkg.add(PackageSpec(; url="https://github.com/JuliaRegistries/RegistryCI.jl", rev="cdg/tagbot-fixup"))'
+        env:
+          JULIA_PKG_SERVER: ''
       - run: julia --project=.ci -e 'using RegistryCI.TagBot; TagBot.main()'
         env:
           GITHUB_TOKEN: ${{ secrets.TAGBOT_TOKEN }}
