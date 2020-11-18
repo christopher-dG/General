@@ -5,6 +5,7 @@ on:
   pull_request:
     types:
       - closed
+  workflow_dispatch
 jobs:
   TagBot:
     if: github.event_name == 'schedule' || github.event.pull_request.merged
@@ -13,7 +14,7 @@ jobs:
       - uses: julia-actions/setup-julia@v1
         with:
           version: '1'
-      - run: julia --project=.ci -e 'using Pkg; Pkg.instantiate(); Pkg.add(PackageSpec(; url="https://github.com/JuliaRegistries/RegistryCI.jl", rev="cdg/tagbot"))'
+      - run: julia --project=.ci -e 'using Pkg; Pkg.instantiate(); Pkg.add(PackageSpec(; url="https://github.com/JuliaRegistries/RegistryCI.jl", rev="cdg/tagbot-fixup"))'
       - run: julia --project=.ci -e 'using RegistryCI.TagBot; TagBot.main()'
         env:
           GITHUB_TOKEN: ${{ secrets.TAGBOT_TOKEN }}
