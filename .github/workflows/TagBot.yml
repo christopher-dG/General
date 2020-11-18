@@ -5,7 +5,7 @@ on:
   pull_request:
     types:
       - closed
-  workflow_dispatch
+  workflow_dispatch:
 jobs:
   TagBot:
     if: github.event_name == 'schedule' || github.event.pull_request.merged
