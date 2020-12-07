@@ -1,8 +1,8 @@
 name: AutoMerge
 
 on:
-  schedule:
-    - cron: '05,17,29,41,53 * * * *'
+#   schedule:
+#     - cron: '05,17,29,41,53 * * * *'
   pull_request:
   workflow_dispatch:
 
@@ -53,9 +53,9 @@ jobs:
             new_jll_package_waiting_period = Minute(15),
             new_version_waiting_period = Minute(15),
             new_jll_version_waiting_period = Minute(15),
-            registry = "JuliaRegistries/General",
+            registry = "christopher-dG/General",
             tagbot_enabled = true,
-            authorized_authors = String["JuliaRegistrator"],
+            authorized_authors = String["christopher-dG"],
             authorized_authors_special_jll_exceptions = String["jlbuild"],
             suggest_onepointzero = false,
             additional_statuses = String[],
